@@ -2,66 +2,83 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
-  <title>Neon Teszt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DodoDouble Neon Teszt</title>
   <style>
+    /* Neon háttér és betűk */
     body {
-      background-color: #0f0f0f;
-      color: #0ff;
-      font-family: 'Arial', sans-serif;
+      margin: 0;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
+      align-items: center;
+      background: radial-gradient(circle, #0f0f1f, #1a1a3f);
+      color: #0ff;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
     }
 
     h1 {
       font-size: 4rem;
-      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
 
     #counter {
-      font-size: 3rem;
+      font-size: 5rem;
       margin-bottom: 2rem;
-      text-shadow: 0 0 5px #ff0, 0 0 10px #ff0;
+      transition: all 0.2s ease;
     }
 
     button {
       padding: 1rem 2rem;
       font-size: 1.5rem;
-      background-color: #0ff;
-      border: none;
+      color: #0ff;
+      background: transparent;
+      border: 2px solid #0ff;
       border-radius: 10px;
-      color: #000;
       cursor: pointer;
-      box-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
-      transition: all 0.2s;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
     }
 
     button:hover {
-      box-shadow: 0 0 10px #ff0, 0 0 20px #ff0, 0 0 40px #ff0;
+      background: #0ff;
+      color: #111;
+      box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
       transform: scale(1.1);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      color: #0ff;
+      font-size: 1rem;
+      text-shadow: 0 0 5px #0ff;
     }
   </style>
 </head>
 <body>
-
-  <h1>Neon Számláló Teszt</h1>
+  <h1>DodoDouble Neon Teszt</h1>
   <div id="counter">0</div>
-  <button id="increaseBtn">Növelés</button>
+  <button id="incrementBtn">Növelés</button>
+
+  <footer>v1</footer>
 
   <script>
-    let counterEl = document.getElementById('counter');
-    let btn = document.getElementById('increaseBtn');
     let count = 0;
+    const counter = document.getElementById('counter');
+    const btn = document.getElementById('incrementBtn');
 
     btn.addEventListener('click', () => {
       count++;
-      counterEl.textContent = count;
+      counter.textContent = count;
+      counter.style.transform = 'scale(1.2)';
+      setTimeout(() => {
+        counter.style.transform = 'scale(1)';
+      }, 150);
     });
   </script>
-
 </body>
 </html>
