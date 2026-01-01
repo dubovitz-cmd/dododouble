@@ -2,41 +2,91 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
-  <title>Számláló Teszt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Teszt</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
+      background-color: #0d0d0d;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      overflow: hidden;
     }
+
+    h1 {
+      font-size: 3em;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; }
+      to { text-shadow: 0 0 20px #0ff, 0 0 40px #0ff; }
+    }
+
     button {
-      font-size: 18px;
-      padding: 10px 20px;
+      background-color: #ff00ff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      color: #fff;
       cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+      transition: all 0.3s ease;
+      margin-top: 30px;
     }
-    #counter {
-      font-size: 48px;
-      margin: 20px 0;
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+    }
+
+    /* Extra: lebegő neon pontok */
+    .dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: #0ff;
+      border-radius: 50%;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: 0.2; }
+      50% { transform: translateY(-300px) translateX(200px); opacity: 1; }
+      100% { transform: translateY(0) translateX(0); opacity: 0.2; }
     }
   </style>
 </head>
 <body>
-  <h1>Számláló Teszt</h1>
-  <div id="counter">0</div>
-  <button id="incrementBtn">+1</button>
+
+  <h1>Neon Teszt</h1>
+  <button id="testButton">Nyomj meg!</button>
 
   <script>
-    // Számláló érték
-    let counter = 0;
-
-    const counterDiv = document.getElementById('counter');
-    const btn = document.getElementById('incrementBtn');
-
     // Gomb esemény
+    const btn = document.getElementById('testButton');
     btn.addEventListener('click', () => {
-      counter += 1;
-      counterDiv.textContent = counter;
+      alert('Gomb működik!');
     });
+
+    // Extra: 10 lebegő neon pont
+    for(let i=0; i<10; i++){
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      dot.style.left = Math.random() * window.innerWidth + 'px';
+      dot.style.top = Math.random() * window.innerHeight + 'px';
+      dot.style.animationDelay = Math.random() * 5 + 's';
+      document.body.appendChild(dot);
+    }
   </script>
+
 </body>
 </html>
