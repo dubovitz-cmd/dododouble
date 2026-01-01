@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Számláló Teszt</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    #counter {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Számláló Teszt</h1>
+  <div id="counter">0</div>
+  <button id="incrementBtn">+1</button>
+
+  <script>
+    // Számláló érték
+    let counter = 0;
+
+    const counterDiv = document.getElementById('counter');
+    const btn = document.getElementById('incrementBtn');
+
+    // Gomb esemény
+    btn.addEventListener('click', () => {
+      counter += 1;
+      counterDiv.textContent = counter;
+    });
+  </script>
+</body>
+</html>
